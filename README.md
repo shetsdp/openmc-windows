@@ -1,4 +1,15 @@
-# OpenMC Windows Installation Guide
+# OpenMC Windows Installation Guide (v0.1-beta)
+
+- This is beta version; hence number of particles is restricted to 10000, and batches to 200.   
+- **Get the stable full version at:** https://shetsdp.github.io/blogs/openmc-windows.html   
+- Fill this form to know future updates: https://www.google.com/   
+- Installing video guide: https://www.youtube.com/   
+- Technical Note: https://www.google.com/   
+
+Author:   
+Sachin Shet   
+https://www.google.com/   
+
 
 ## System Requirements
 - Windows 10 or Windows 11 (64-bit)
@@ -101,6 +112,14 @@ cd D:\OpenMC\examples\jezbel\
 python jezbel.py
 ```
 
+OpenMC Should be running at this point. Congratulations.
+
+
+# Important Notes
+- Native Windows build (WSL or DOCKER is not required to run).
+- Compatible with the OpenMC Python API.
+- Uses the official OpenMC HDF5 nuclear data library.
+- Work in progress to build stable OpenMC GUI
 
 ## Troubleshooting
 1. **'openmc' is not recognized**
@@ -113,8 +132,3 @@ python jezbel.py
    - If empty, create the environment variable manually.
 4. **Missing DLL errors**
    - Ensure all DLLs remain in the same directory as `openmc.exe`.
-
-## Notes
-- Native Windows build (WSL or DOCKER is not required to run).
-- Compatible with the OpenMC Python API.
-- Uses the official OpenMC HDF5 nuclear data library.
