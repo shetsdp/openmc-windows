@@ -9,21 +9,32 @@
 ## Step 1 – Install Python
 Download Python from: https://www.python.org/downloads/windows/
 
+Link: https://www.python.org/ftp/python/3.14.6/python-3.14.6-amd64.exe
+
 During installation enable:
 - Add Python to PATH
-- Install `pip`
 
 Verify:
 ```cmd
 python --version
-pip --version
+python -m pip --version
+```
+## Step 2 – Prepare Nuclear Data
+
+Download Nuclear data from OpenMC Website https://openmc.org/data/
+
+Link: https://anl.box.com/shared/static/9igk353zpy8fn9ttvtrqgzvw1vtejoz6.xz
+
+Create a folder `OpenMC` in a drive, where you have write permission, and extract the cross sections data in it.
+
+Example:
+```
+D:\OpenMC\endf-b-vii.1-hdf5\
 ```
 
-## Step 2 – Install OpenMC Windows
-Run:
-```cmd
-openmc-windows-installer.exe
-```
+## Step 3 – Install OpenMC Windows
+
+Download `openmc-windows-v0.1-beta-installer.exe` from the release page and execute the installer.
 
 The installer will:
 - Install the native OpenMC executable
@@ -32,24 +43,40 @@ The installer will:
 - Configure the `OPENMC_CROSS_SECTIONS` environment variable
 - Install the OpenMC Python module (if `pip` is available)
 
-## Step 3 – Select Nuclear Data
 When prompted, select the folder containing: `cross_sections.xml`
 
-Example:
-```
-D:\endf-b-vii.1-hdf5
-```
+Select `D:\OpenMC\endf-b-vii.1-hdf5\`
 
 The installer automatically configures:
-`OPENMC_CROSS_SECTIONS=D:\endf-b-vii.1-hdf5\cross_sections.xml`
+`OPENMC_CROSS_SECTIONS=D:\OpenMC\endf-b-vii.1-hdf5\cross_sections.xml`
 
 ## Step 4 – Verify Installation
-Open a new Command Prompt:
+
+Signout and Signin back to your windows account. This will add new directory to the system PATH variable.
+
+Open a new Command Prompt (Win+R, type `cmd`, Enter):
+
 ```cmd
 openmc --version
 ```
 Expected output:
-`OpenMC version 0.15.x`
+```cmd
+OpenMC version 0.15.3
+Commit hash: 27e38e894697bb32a1dac7848d2618818b6b8daf
+Copyright (c) 2011-2025 MIT, UChicago Argonne LLC, and contributors
+MIT/X license at <https://docs.openmc.org/en/latest/license.html>
+Build type:            Release
+Compiler ID:           GNU 15.2.0
+MPI enabled:           no
+Parallel HDF5 enabled: no
+PNG support:           yes
+DAGMC support:         no
+libMesh support:       no
+MCPL support:          no
+Coverage testing:      no
+Profiling flags:       no
+UWUW support:          no
+```
 
 Python API:
 ```python
@@ -57,32 +84,23 @@ python
 import openmc
 print(openmc.__version__)
 ```
+Expected output:
+`0.15.3`
 
 ## Running a Simulation
+
+Copy OpenMC examples to your `OpenMC` directory
+
+Copy `C:\Program Files (x86)\OpenMC\examples` to `D:\OpenMC` directory.
+
 ```cmd
-cd examples
-openmc
+cd D:\OpenMC\examples\jezbel\
 ```
 
-or
-
-```python
-import openmc
-openmc.run()
-```
-
-## Updating the Python Module
 ```cmd
-python -m pip install --upgrade openmc
+python jezbel.py
 ```
 
-## Uninstalling
-Settings → Apps → Installed Apps → OpenMC Windows → Uninstall
-
-Remove Python module:
-```cmd
-python -m pip uninstall openmc
-```
 
 ## Troubleshooting
 1. **'openmc' is not recognized**
@@ -97,6 +115,6 @@ python -m pip uninstall openmc
    - Ensure all DLLs remain in the same directory as `openmc.exe`.
 
 ## Notes
-- Native Windows build (WSL is not required to run).
+- Native Windows build (WSL or DOCKER is not required to run).
 - Compatible with the OpenMC Python API.
 - Uses the official OpenMC HDF5 nuclear data library.
