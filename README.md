@@ -1,14 +1,14 @@
 # OpenMC Windows Installation Guide (v0.1-beta)
 
 - This is beta version; hence number of particles is restricted to 10000, and batches to 200.   
-- **Get the stable full version at:** https://shetsdp.github.io/blogs/openmc-windows.html   
-- Fill this form to know future updates: https://www.google.com/   
+- **Get the stable full version at:** [OpenMC Windows Page](https://shetsdp.github.io/blogs/openmc-windows.html   )
+- Fill this form to know future updates: [Google Form](https://www.google.com/   )
 - Installing video guide: https://www.youtube.com/   
-- Technical Note: https://www.google.com/   
+- Technical Note: [OpenMC_Windows_Technical_Note_sachin.pdf](https://github.com/shetsdp/openmc-windows/blob/main/OpenMC_Windows_Technical_Note_sachin.pdf)
 
 Author:   
 Sachin Shet   
-https://www.google.com/   
+[LinkedIn](https://www.linkedin.com/in/sac18/)
 
 
 ## System Requirements
